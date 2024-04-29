@@ -94,16 +94,16 @@ class YtdlStream(BaseStream):
         self._itag = info['format_id']
 
         if (info.get('acodec') != 'none' and
-                info.get('vcodec') == 'none'):
+            info.get('vcodec') == 'none'):
             self._mediatype = 'audio'
         elif (info.get('acodec') == 'none' and
-                info.get('vcodec') != 'none'):
+              info.get('vcodec') != 'none'):
             self._mediatype = 'video'
         else:
             self._mediatype = 'normal'
 
         self._threed = info.get('format_note') == '3D'
-            self._rawbitrate = 0
+        self._rawbitrate = 0
 
         height = info.get('height') or 0
         width = info.get('width') or 0
@@ -134,7 +134,7 @@ class YtdlStream(BaseStream):
                  callback=None, meta=False, remux_audio=False):
 
         downloader = youtube_dl.downloader.http.HttpFD(ydl(),
-            {'http_chunk_size': 10485760})
+                                                       {'http_chunk_size': 10485760})
 
         progress_available = ["KB", "MB", "GB"]
         if progress not in progress_available:

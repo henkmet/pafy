@@ -103,9 +103,6 @@ class YtdlStream(BaseStream):
             self._mediatype = 'normal'
 
         self._threed = info.get('format_note') == '3D'
-        if (info.get('abr') != 'none'):
-            self._rawbitrate = info.get('abr') * 1024
-        else:
             self._rawbitrate = 0
 
         height = info.get('height') or 0
